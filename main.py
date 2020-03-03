@@ -19,10 +19,13 @@ chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
 # drop blank lines
 text = '\n'.join(chunk for chunk in chunks if chunk)
 
-caracteres = ['[',']','"','servidores']
+caracteres = ['{','[',']','"','servidores',',',':rgf:','rgf:','nome','cargo','rendimentos']
 
 for i in range(0, len(caracteres)):
     text = text.replace(caracteres[i], "")
+text = text.split("}")
 
-print(text)
+for i in text:
+    print(i + "\n")
+
 
