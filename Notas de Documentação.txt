@@ -1,0 +1,58 @@
+	REGRAS DE NEGÓCIOS
+
+	- Os dados do site da transparência da prefeitura de Mogi das Cruzes  precisam ser atualizados pelo menos a cada 30 dias de acordo com a lei da transparência; //Fonte: Renato M.
+	- A prefeitura de Mogi das Cruzes deve disponibilizar os dados referentes às despesas, receitas, fornecedores, programas, ações e projetos para o público, de acordo com a lei federal ei n° 6.924,de 25 de julho de 2009; //Fonte: Renato M.
+		-Esses dados devem conter informações sobre os servidores públicos, obras públicas e concursos públicos;
+	- Cabe ao Ministério Público garantir a veracidade dos dados informados por meio de fiscalizações;
+
+	REQUISITOS
+
+	LEGENDA: (-) NECESSÁRIO
+		 (*) A DECIDIR
+		 (+) SE SOBRAR TEMPO
+
+	- O sistema deve, a cada 24H, atualizar seu banco de dados com os dados proveniente do site "http://www.transparencia.pmmc.com.br/"; //Fonte: Renato M.
+	- O sistema deve fornecer para o usuário os seguintes dados sobre cada servidor pública: //Fonte: Rai B.
+		- Nome;
+		- Cargo;
+		- Regime;
+		- Referência;
+		- Total Bruto do salário;
+		- Total Líquido do salário;
+		- Total de Descontos;
+		- Cada remuneração e seu valor;
+		- Cada desconto e seu valor;
+	- O sistema deve fornecer a possibilidade de buscar e filtrar os dados dos servidores por qualquer um dos tipos de dados armazenados; não somente isso, o sistema deve fornecer os filtros:
+		- De intervalo de salário;
+		- De intervalo de descontos;
+		- De intervalo de referência;
+	- O sistema deve ter uma interface intuitiva, responsiva para dispositivos móveis e limpa; //Fonte: Rai B.
+	- O sistema deve fornecer para o usuário os seguintes dados de cada obra pública: //Fonte: Rai B.
+		- Função de Governo;
+		- Órgão Contratante;
+		- Denominação / Destinação da Obra
+		- Endereço da Obra;
+		- Valor Inicial Previsto; 
+		- Valor Total Contratado; 
+		- Nome da(s) Empresa(s) Contratada(s); 
+		- Data de Início da Obra;
+		- Valor Total dos Termos Aditivos;
+		- Reajuste ou Revisão do Contrato em %;
+		- Nivel de Execução Física;
+		- Valor Total Pago;
+		- Data Prevista Para Conclusão;
+		- Situação da Obra;
+		- Data de Recebimento Definitivo;
+		- Nome do Servidor Responsável;
+		- Observações;
+	- O sistema deve fornecer a possibilidade de buscar e filtrar os dados das obras públicas por qualquer um dos tipos de dados armazenados; não somente isso, o sistema deve fornecer os filtros: //Fonte: Renato M.
+		- Intervalos de Início e Fim de Obra;
+		- Valor da Obra;
+	+ O sistema deve exibir as informações de Concursos Públicos. //Fonte: Renato M.
+
+	STAKEHOLDERS
+
+	- A população de Mogi das Cruzes;
+	- O profeessor da matéria de ES II;
+	- A prefeitura do município de Mogi das Cruzes;
+	- Os estudantes da FATEC Mogi das Cruzes responsáveis pelo projeto;
