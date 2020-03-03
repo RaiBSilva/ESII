@@ -19,5 +19,27 @@ chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
 # drop blank lines
 text = '\n'.join(chunk for chunk in chunks if chunk)
 
-# o texto da pagina agora ta em string
+dicionario = {}
+
+for i in range(0, len(text)-1):
+    if text[i] == '[':
+        text = text.replace(text[i], "")
+for i in range(0, len(text)-1):
+    if text[i] == ']':
+        text = text.replace(text[i], "")
+
+""""for i in range(0, len(text)-1):
+    if text[i] == '{':
+        text = text.replace(text[i], "")"""
+
+
 print(text)
+
+""""x = text.split(",")
+y = []
+for i in x:
+   y.append(i.split("{"))
+for i in y:
+   x.append(i.split("["))
+print(x[0])"""
+
