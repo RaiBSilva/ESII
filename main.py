@@ -1,12 +1,13 @@
-from sitePMC import getTexto
-from sitePMC import filtraDados
+import sitePMC
 
 url = 'http://www.licitacao.pmmc.com.br/Transparencia/vencimentos2'
 
-text = getTexto(url)
-print(text)
+objMogi = sitePMC.siteMogi(url)
+objMogi.getTexto()
+
 caracteres = ['{','[',']','"','servidores',',',':rgf:','rgf:','nome','cargo','rendimentos']
-text = filtraDados(caracteres, text)
+
+text = objMogi.filtraDados(caracteres)
 
 for i in text:
     print(i + "\n")
