@@ -1,31 +1,12 @@
-import requests
-import lxml
-from bs4 import BeautifulSoup
+from sitePMC import getTexto
+from sitePMC import filtraDados
 
-source = requests.get('http://www.licitacao.pmmc.com.br/Transparencia/vencimentos2').text
-soup = BeautifulSoup(source, 'lxml')
+url = 'http://www.licitacao.pmmc.com.br/Transparencia/vencimentos2'
 
-# kill all script and style elements
-for script in soup(["script", "style"]):
-    script.extract()    # rip it out
-
-# get text
-text = soup.get_text()
-
-# break into lines and remove leading and trailing space on each
-lines = (line.strip() for line in text.splitlines())
-# break multi-headlines into a line each
-chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
-# drop blank lines
-text = '\n'.join(chunk for chunk in chunks if chunk)
-
+text = getTexto(url)
+print(text)
 caracteres = ['{','[',']','"','servidores',',',':rgf:','rgf:','nome','cargo','rendimentos']
-
-for i in range(0, len(caracteres)):
-    text = text.replace(caracteres[i], "")
-text = text.split("}")
+text = filtraDados(caracteres, text)
 
 for i in text:
     print(i + "\n")
-
-
