@@ -8,47 +8,48 @@
 	REQUISITOS
 
 	LEGENDA: (-) NECESSÁRIO
-		 (*) A DECIDIR
 		 (+) SE SOBRAR TEMPO
+		 (*) A DECIDIR
 
-	- O sistema deve, a cada 24H, atualizar seu banco de dados com os dados proveniente do site "http://www.transparencia.pmmc.com.br/"; //Fonte: Renato M.
+	- O sistema deve, a cada 24H, atualizar seu banco de dados com os dados proveniente dos sites "http://www.transparencia.pmmc.com.br/", "http://www.cmmc.com.br/"; //Fonte: Renato M.
+	- O sistema deve ter uma interface intuitiva, responsiva para dispositivos móveis e limpa; //Fonte: Rai B.
 	- O sistema deve fornecer para o usuário os seguintes dados sobre cada servidor pública: //Fonte: Rai B.
 		- Nome;
 		- Cargo;
 		- Regime;
 		- Referência;
-		- Total Bruto do salário;
-		- Total Líquido do salário;
-		- Total de Descontos;
-		- Cada remuneração e seu valor;
-		- Cada desconto e seu valor;
+		- Total Bruto do salário (em R$).
+		- Total Líquido do salário (em R$).
+		- Total de Descontos (em R$).
+		- Cada remuneração e seu valor (em R$).
+		- Cada desconto e seu valor (em R$).
 	- O sistema deve fornecer a possibilidade de buscar e filtrar os dados dos servidores por qualquer um dos tipos de dados armazenados; não somente isso, o sistema deve fornecer os filtros:
 		- De intervalo de salário;
 		- De intervalo de descontos;
 		- De intervalo de referência;
-	- O sistema deve ter uma interface intuitiva, responsiva para dispositivos móveis e limpa; //Fonte: Rai B.
-	- O sistema deve fornecer para o usuário os seguintes dados de cada obra pública: //Fonte: Rai B.
-		- Função de Governo;
-		- Órgão Contratante;
-		- Denominação / Destinação da Obra
-		- Endereço da Obra;
-		- Valor Inicial Previsto; 
-		- Valor Total Contratado; 
-		- Nome da(s) Empresa(s) Contratada(s); 
-		- Data de Início da Obra;
-		- Valor Total dos Termos Aditivos;
-		- Reajuste ou Revisão do Contrato em %;
-		- Nivel de Execução Física;
-		- Valor Total Pago;
-		- Data Prevista Para Conclusão;
-		- Situação da Obra;
-		- Data de Recebimento Definitivo;
-		- Nome do Servidor Responsável;
-		- Observações;
-	- O sistema deve fornecer a possibilidade de buscar e filtrar os dados das obras públicas por qualquer um dos tipos de dados armazenados; não somente isso, o sistema deve fornecer os filtros: //Fonte: Renato M.
-		- Intervalos de Início e Fim de Obra;
-		- Valor da Obra;
-	+ O sistema deve exibir as informações de Concursos Públicos. //Fonte: Renato M.
+	- O sistema deve possibilitar a comparação dos salários de vários servidores públicos; //Fonte: Rai B.
+	- O sistema deve mostrar a assiduidade dos parlamentares, mostrando:
+		- Quantas faltas cada parlamentar tem;
+		- Os dias nos quais o parlamentar faltou;
+		- O motivo de cada falta;
+	- O sistema deve apresentar os dados das diárias e passagens dos servidores públicos, em específico: //Fonte: Rai B.
+		- Servidor que fez a solicitação de diária;
+		- Período;
+		- Data e horário de saída e chegada;
+		- Destino / Motivo;
+		- Valor (em R$);
+	- O sistema deve fornecer a possibilidade de buscar e filtrar os dados das diárias por qualquer um dos tipos de dados armazenados; além diso, o sistema deve oferecer filtros: //Fonte Rai B.
+		- De intervalo de data;
+		- De intervalo de custo;
+	- O sistema deve apresentar os dados dos projetos de leis propostos na câmara municipal de Mogi das Cruzes, em específico: //Rai B.
+		Nº;
+		Autor;
+		Assunto;
+		Anotação;
+	- O sistema deve fornecer a possibilidade de buscar e filtrar os dados dos projetos de lei por qualquer um dos tipos de dados armazenados; além diso, o sistema deve oferecer filtros: //Rai B.
+		- De tipo de Lei;
+		- De ano;
+	
 
 	STAKEHOLDERS
 
