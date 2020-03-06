@@ -11,9 +11,10 @@ objMogi.getTexto()
 caracteres = ['{','[',']','"','servidores',',',':rgf:','rgf:','nome','cargo','rendimentos','.']
 
 text = objMogi.filtraDados(caracteres)
+servidorPublico = []
 
 for i in range(0, len(text)):
     linha = text[i].split(":")
     if len(linha) == 4:
-        servidorPublico = (linha[0], linha[1], linha[2], linha[3])
-        objDB.insertInTB(servidorPublico)
+        servidorPublico.append((linha[0], linha[1], linha[2], linha[3]))
+objDB.insertInTB(servidorPublico)

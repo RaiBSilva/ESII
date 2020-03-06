@@ -1,5 +1,4 @@
 import requests
-import lxml
 from bs4 import BeautifulSoup
 class siteMogi:
     def __init__(self, url):
