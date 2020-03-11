@@ -1,0 +1,10 @@
+Para cpnectar o python ao SQL server é necessário criar uma conexão DSN.  
+
+Para isso, sigo o caminho:
+Painel de controle --> Ferramentas administrativas --> Fontes de Dados ODBC (64 bits)
+
+Selecione a aba DSN de sistema, e nela crie uma conexão para o banco de dados SQL utilizando o driver:
+
+ODBC Driver 17 for SQL Server
+
+Download em: https://www.microsoft.com/pt-br/download/details.aspx?id=56567
