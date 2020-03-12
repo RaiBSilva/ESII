@@ -1,0 +1,55 @@
+﻿@model IEnumerable<se_liga_mogi.Models.servidores>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarColor03">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" }))
+        {
+            <span style="margin-right: 10px">Buscar pelo RGF: </span>
+            @Html.TextBox("Pesquisa", "", new { @class = "form-control mr-sm-2" })
+            <button class="btn btn-info my-2 my-sm-0" type="submit" value="Pesquisar">Buscar</button>
+        }
+    </div>
+</nav>
+
+<table class="table">
+    <tr class="table-info">
+        <th>
+            RGF
+        </th>
+        <th>
+            Nome do Servidor
+        </th>
+        <th>
+            Cargo do Servidor
+        </th>
+        <th>
+            Salario do Servidor (R$)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="table-light">
+            <td>
+                @Html.DisplayFor(modelItem => item.rgf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome_servidor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cargo_servidor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salario_servidor)
+            </td>
+            <td>
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.id_servidor }, new { @class = "btn btn-info btn-sm" })
+            </td>
+        </tr>
+        }
+
+</table>
