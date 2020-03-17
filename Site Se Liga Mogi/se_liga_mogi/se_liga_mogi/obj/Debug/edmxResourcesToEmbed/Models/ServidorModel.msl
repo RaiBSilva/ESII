@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Se_Liga_MogiModel1StoreContainer" CdmEntityContainer="Se_Liga_MogiEntities1">
+    <EntitySetMapping Name="servidores">
+      <EntityTypeMapping TypeName="Se_Liga_MogiModel1.servidores">
+        <MappingFragment StoreEntitySet="servidores">
+          <ScalarProperty Name="id_servidor" ColumnName="id_servidor" />
+          <ScalarProperty Name="rgf" ColumnName="rgf" />
+          <ScalarProperty Name="nome_servidor" ColumnName="nome_servidor" />
+          <ScalarProperty Name="cargo_servidor" ColumnName="cargo_servidor" />
+          <ScalarProperty Name="salario_servidor" ColumnName="salario_servidor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
