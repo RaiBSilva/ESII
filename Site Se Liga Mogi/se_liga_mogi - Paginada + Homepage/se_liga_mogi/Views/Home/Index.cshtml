@@ -1,0 +1,111 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <title>Home</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cabecalho {
+            margin: 0;
+            margin-top: -20px;
+            padding: 0;
+            display: block;
+            position: relative;
+            background: url(../../Image/background-homepage.jfif);
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 700px;
+        }
+
+        .logo {
+            display: block;
+            position: relative;
+            width: 500px;
+            left: calc(50% - 250px);
+            top: 15%;
+        }
+
+        .menu-navegacao {
+            display: flex;
+            position: relative;
+            list-style: none;
+            margin-top: -100px;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+            .menu-navegacao > li {
+                border: 1px solid rgba(0,0,0,.2);
+                padding: 15px;
+                padding-left: 30px;
+                padding-right: 30px;
+                width: 25%;
+                max-height: 450px;
+                background: #fff;
+                color: #17a2b8;
+                text-align: center;
+            }
+
+                .menu-navegacao > li > a {
+                    display: block;
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    text-decoration: none;
+                    color: #17a2b8;
+                }
+
+                .menu-navegacao > li:hover {
+                    color: #17a2b8;
+                    text-decoration: none;
+                    background-color: #e9ecef;
+                }
+
+                .menu-navegacao > li > a > span {
+                    font-size: 12pt;
+                }
+
+                .menu-navegacao > li > a > h5 {
+                    font-weight: 500;
+                }
+    </style>
+
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div style="background: rgba(0,0,0,.4); height: 100%;">
+            <img src="~/Image/logo.png" class="logo" alt="Logo Se Liga Mogi!" />
+        </div>
+    </header>
+    <section>
+        <nav>
+            <ul class="menu-navegacao">
+                <li><a href="~/Servidores/"><h5>Servidores</h5><span>Informações referente aos servidores públicos de Mogi das Cruzes.<br />Salário, cargo, etc.</span></a></li>
+                <li><a href="#"><h5>Presença dos parlamentares</h5><span>Informações referente à presença dos parlamentares na câmara de Mogi das Cruzes.<br />Faltas, motivos, etc.</span></a></li>
+                <li><a href="#"><h5>Diárias e passagens dos servidores públicos</h5><span>Veja os gastos com diárias em hoteis e passagens dos servidores.<br />Valor, motivo, destino, etc.</span></a></li>
+                <li><a href="#"><h5>Projetos de Leis</h5><span>Veja os projetos de leis propostos na câmara de Mogi das Cruzes.<br />Autor, Assunto, etc.</span></a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <footer style="margin: 80px;">
+        <hr />
+        <p>&copy; @DateTime.Now.Year - FATEC Mogi das Cruzes</p>
+    </footer>
+</body>
+</html>
