@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Se_Liga_MogiModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="descontos_servidores">
+          <Key>
+            <PropertyRef Name="id_servidor" />
+          </Key>
+          <Property Name="id_servidor" Type="int" Nullable="false" />
+          <Property Name="nome_desconto" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="valor_desconto" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="diarias_e_passagens">
+          <Key>
+            <PropertyRef Name="id_servidor" />
+          </Key>
+          <Property Name="id_servidor" Type="int" Nullable="false" />
+          <Property Name="data_inicio" Type="date" Nullable="false" />
+          <Property Name="data_fim" Type="date" Nullable="false" />
+          <Property Name="destino" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="motivo" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="valor" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="parlamentares">
+          <Key>
+            <PropertyRef Name="id_parlamentar" />
+          </Key>
+          <Property Name="id_parlamentar" Type="int" Nullable="false" />
+          <Property Name="nome_parlamentar" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="cargo_parlamentar" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="total_faltas" Type="int" />
+        </EntityType>
+        <EntityType Name="presenca_parlamentares">
+          <Key>
+            <PropertyRef Name="id_parlamentar" />
+          </Key>
+          <Property Name="id_parlamentar" Type="int" Nullable="false" />
+          <Property Name="data_presença" Type="date" Nullable="false" />
+          <Property Name="falta_ou_nao" Type="bit" Nullable="false" />
+          <Property Name="motivo_da_falta" Type="varchar" MaxLength="90" Nullable="false" />
+        </EntityType>
+        <EntityType Name="projetos_de_lei">
+          <Key>
+            <PropertyRef Name="numero_projeto" />
+          </Key>
+          <Property Name="numero_projeto" Type="int" Nullable="false" />
+          <Property Name="id_autor" Type="int" Nullable="false" />
+          <Property Name="assunto" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="anotacoes" Type="varchar" MaxLength="90" Nullable="false" />
+        </EntityType>
+        <EntityType Name="remuneracao_servidores">
+          <Key>
+            <PropertyRef Name="id_servidor" />
+          </Key>
+          <Property Name="id_servidor" Type="int" Nullable="false" />
+          <Property Name="nome_remuneracao" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="valor_remuneracao" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="servidores">
+          <Key>
+            <PropertyRef Name="id_servidor" />
+          </Key>
+          <Property Name="id_servidor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rgf" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="nome_servidor" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="cargo_servidor" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="salario_servidor" Type="money" Nullable="false" />
+          <Property Name="salario_liquido_servidor" Type="money" />
+          <Property Name="descontos_servidor" Type="money" />
+        </EntityType>
+        <Association Name="FK_descontos_servidores_servidores">
+          <End Role="servidores" Type="Self.servidores" Multiplicity="1" />
+          <End Role="descontos_servidores" Type="Self.descontos_servidores" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="servidores">
+              <PropertyRef Name="id_servidor" />
+            </Principal>
+            <Dependent Role="descontos_servidores">
+              <PropertyRef Name="id_servidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_diarias_e_passagens_servidores">
+          <End Role="servidores" Type="Self.servidores" Multiplicity="1" />
+          <End Role="diarias_e_passagens" Type="Self.diarias_e_passagens" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="servidores">
+              <PropertyRef Name="id_servidor" />
+            </Principal>
+            <Dependent Role="diarias_e_passagens">
+              <PropertyRef Name="id_servidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presenca_parlamentares_parlamentares">
+          <End Role="parlamentares" Type="Self.parlamentares" Multiplicity="1" />
+          <End Role="presenca_parlamentares" Type="Self.presenca_parlamentares" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="parlamentares">
+              <PropertyRef Name="id_parlamentar" />
+            </Principal>
+            <Dependent Role="presenca_parlamentares">
+              <PropertyRef Name="id_parlamentar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_projetos_de_lei_parlamentares">
+          <End Role="parlamentares" Type="Self.parlamentares" Multiplicity="1" />
+          <End Role="projetos_de_lei" Type="Self.projetos_de_lei" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parlamentares">
+              <PropertyRef Name="id_parlamentar" />
+            </Principal>
+            <Dependent Role="projetos_de_lei">
+              <PropertyRef Name="id_autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_remuneracao_servidores_servidores">
+          <End Role="servidores" Type="Self.servidores" Multiplicity="1" />
+          <End Role="remuneracao_servidores" Type="Self.remuneracao_servidores" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="servidores">
+              <PropertyRef Name="id_servidor" />
+            </Principal>
+            <Dependent Role="remuneracao_servidores">
+              <PropertyRef Name="id_servidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Se_Liga_MogiModel1StoreContainer">
+          <EntitySet Name="descontos_servidores" EntityType="Self.descontos_servidores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="diarias_e_passagens" EntityType="Self.diarias_e_passagens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="parlamentares" EntityType="Self.parlamentares" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="presenca_parlamentares" EntityType="Self.presenca_parlamentares" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="projetos_de_lei" EntityType="Self.projetos_de_lei" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="remuneracao_servidores" EntityType="Self.remuneracao_servidores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="servidores" EntityType="Self.servidores" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_descontos_servidores_servidores" Association="Self.FK_descontos_servidores_servidores">
+            <End Role="servidores" EntitySet="servidores" />
+            <End Role="descontos_servidores" EntitySet="descontos_servidores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_diarias_e_passagens_servidores" Association="Self.FK_diarias_e_passagens_servidores">
+            <End Role="servidores" EntitySet="servidores" />
+            <End Role="diarias_e_passagens" EntitySet="diarias_e_passagens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presenca_parlamentares_parlamentares" Association="Self.FK_presenca_parlamentares_parlamentares">
+            <End Role="parlamentares" EntitySet="parlamentares" />
+            <End Role="presenca_parlamentares" EntitySet="presenca_parlamentares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_projetos_de_lei_parlamentares" Association="Self.FK_projetos_de_lei_parlamentares">
+            <End Role="parlamentares" EntitySet="parlamentares" />
+            <End Role="projetos_de_lei" EntitySet="projetos_de_lei" />
+          </AssociationSet>
+          <AssociationSet Name="FK_remuneracao_servidores_servidores" Association="Self.FK_remuneracao_servidores_servidores">
+            <End Role="servidores" EntitySet="servidores" />
+            <End Role="remuneracao_servidores" EntitySet="remuneracao_servidores" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Se_Liga_MogiModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="servidores">
+          <Key>
+            <PropertyRef Name="id_servidor" />
+          </Key>
+          <Property Name="id_servidor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rgf" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nome_servidor" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cargo_servidor" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="salario_servidor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="salario_liquido_servidor" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="descontos_servidor" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="descontos_servidores" Relationship="Se_Liga_MogiModel1.FK_descontos_servidores_servidores" FromRole="servidores" ToRole="descontos_servidores" />
+          <NavigationProperty Name="diarias_e_passagens" Relationship="Se_Liga_MogiModel1.FK_diarias_e_passagens_servidores" FromRole="servidores" ToRole="diarias_e_passagens" />
+          <NavigationProperty Name="remuneracao_servidores" Relationship="Se_Liga_MogiModel1.FK_remuneracao_servidores_servidores" FromRole="servidores" ToRole="remuneracao_servidores" />
+        </EntityType>
+        <EntityContainer Name="Se_Liga_MogiEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="servidores" EntityType="Self.servidores" />
+          <EntitySet Name="descontos_servidores" EntityType="Se_Liga_MogiModel1.descontos_servidores" />
+          <EntitySet Name="diarias_e_passagens" EntityType="Se_Liga_MogiModel1.diarias_e_passagens" />
+          <EntitySet Name="parlamentares" EntityType="Se_Liga_MogiModel1.parlamentares" />
+          <EntitySet Name="presenca_parlamentares" EntityType="Se_Liga_MogiModel1.presenca_parlamentares" />
+          <EntitySet Name="projetos_de_lei" EntityType="Se_Liga_MogiModel1.projetos_de_lei" />
+          <EntitySet Name="remuneracao_servidores" EntityType="Se_Liga_MogiModel1.remuneracao_servidores" />
+          <AssociationSet Name="FK_descontos_servidores_servidores" Association="Se_Liga_MogiModel1.FK_descontos_servidores_servidores">
+            <End Role="servidores" EntitySet="servidores" />
+            <End Role="descontos_servidores" EntitySet="descontos_servidores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_diarias_e_passagens_servidores" Association="Se_Liga_MogiModel1.FK_diarias_e_passagens_servidores">
+            <End Role="servidores" EntitySet="servidores" />
+            <End Role="diarias_e_passagens" EntitySet="diarias_e_passagens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_presenca_parlamentares_parlamentares" Association="Se_Liga_MogiModel1.FK_presenca_parlamentares_parlamentares">
+            <End Role="parlamentares" EntitySet="parlamentares" />
+            <End Role="presenca_parlamentares" EntitySet="presenca_parlamentares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_projetos_de_lei_parlamentares" Association="Se_Liga_MogiModel1.FK_projetos_de_lei_parlamentares">
+            <End Role="parlamentares" EntitySet="parlamentares" />
+            <End Role="projetos_de_lei" EntitySet="projetos_de_lei" />
+          </AssociationSet>
+          <AssociationSet Name="FK_remuneracao_servidores_servidores" Association="Se_Liga_MogiModel1.FK_remuneracao_servidores_servidores">
+            <End Role="servidores" EntitySet="servidores" />
+            <End Role="remuneracao_servidores" EntitySet="remuneracao_servidores" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="descontos_servidores">
+          <Key>
+            <PropertyRef Name="id_servidor" />
+          </Key>
+          <Property Name="id_servidor" Type="Int32" Nullable="false" />
+          <Property Name="nome_desconto" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="valor_desconto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="servidores" Relationship="Se_Liga_MogiModel1.FK_descontos_servidores_servidores" FromRole="descontos_servidores" ToRole="servidores" />
+        </EntityType>
+        <EntityType Name="diarias_e_passagens">
+          <Key>
+            <PropertyRef Name="id_servidor" />
+          </Key>
+          <Property Name="id_servidor" Type="Int32" Nullable="false" />
+          <Property Name="data_inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="data_fim" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="destino" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="motivo" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="valor" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="servidores" Relationship="Se_Liga_MogiModel1.FK_diarias_e_passagens_servidores" FromRole="diarias_e_passagens" ToRole="servidores" />
+        </EntityType>
+        <EntityType Name="parlamentares">
+          <Key>
+            <PropertyRef Name="id_parlamentar" />
+          </Key>
+          <Property Name="id_parlamentar" Type="Int32" Nullable="false" />
+          <Property Name="nome_parlamentar" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_parlamentar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="total_faltas" Type="Int32" />
+          <NavigationProperty Name="presenca_parlamentares" Relationship="Se_Liga_MogiModel1.FK_presenca_parlamentares_parlamentares" FromRole="parlamentares" ToRole="presenca_parlamentares" />
+          <NavigationProperty Name="projetos_de_lei" Relationship="Se_Liga_MogiModel1.FK_projetos_de_lei_parlamentares" FromRole="parlamentares" ToRole="projetos_de_lei" />
+        </EntityType>
+        <EntityType Name="presenca_parlamentares">
+          <Key>
+            <PropertyRef Name="id_parlamentar" />
+          </Key>
+          <Property Name="id_parlamentar" Type="Int32" Nullable="false" />
+          <Property Name="data_presença" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="falta_ou_nao" Type="Boolean" Nullable="false" />
+          <Property Name="motivo_da_falta" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="parlamentares" Relationship="Se_Liga_MogiModel1.FK_presenca_parlamentares_parlamentares" FromRole="presenca_parlamentares" ToRole="parlamentares" />
+        </EntityType>
+        <EntityType Name="projetos_de_lei">
+          <Key>
+            <PropertyRef Name="numero_projeto" />
+          </Key>
+          <Property Name="numero_projeto" Type="Int32" Nullable="false" />
+          <Property Name="id_autor" Type="Int32" Nullable="false" />
+          <Property Name="assunto" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="anotacoes" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="parlamentares" Relationship="Se_Liga_MogiModel1.FK_projetos_de_lei_parlamentares" FromRole="projetos_de_lei" ToRole="parlamentares" />
+        </EntityType>
+        <EntityType Name="remuneracao_servidores">
+          <Key>
+            <PropertyRef Name="id_servidor" />
+          </Key>
+          <Property Name="id_servidor" Type="Int32" Nullable="false" />
+          <Property Name="nome_remuneracao" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="valor_remuneracao" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="servidores" Relationship="Se_Liga_MogiModel1.FK_remuneracao_servidores_servidores" FromRole="remuneracao_servidores" ToRole="servidores" />
+        </EntityType>
+        <Association Name="FK_descontos_servidores_servidores">
+          <End Type="Se_Liga_MogiModel1.servidores" Role="servidores" Multiplicity="1" />
+          <End Type="Se_Liga_MogiModel1.descontos_servidores" Role="descontos_servidores" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="servidores">
+              <PropertyRef Name="id_servidor" />
+            </Principal>
+            <Dependent Role="descontos_servidores">
+              <PropertyRef Name="id_servidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_diarias_e_passagens_servidores">
+          <End Type="Se_Liga_MogiModel1.servidores" Role="servidores" Multiplicity="1" />
+          <End Type="Se_Liga_MogiModel1.diarias_e_passagens" Role="diarias_e_passagens" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="servidores">
+              <PropertyRef Name="id_servidor" />
+            </Principal>
+            <Dependent Role="diarias_e_passagens">
+              <PropertyRef Name="id_servidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_presenca_parlamentares_parlamentares">
+          <End Type="Se_Liga_MogiModel1.parlamentares" Role="parlamentares" Multiplicity="1" />
+          <End Type="Se_Liga_MogiModel1.presenca_parlamentares" Role="presenca_parlamentares" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="parlamentares">
+              <PropertyRef Name="id_parlamentar" />
+            </Principal>
+            <Dependent Role="presenca_parlamentares">
+              <PropertyRef Name="id_parlamentar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_projetos_de_lei_parlamentares">
+          <End Type="Se_Liga_MogiModel1.parlamentares" Role="parlamentares" Multiplicity="1" />
+          <End Type="Se_Liga_MogiModel1.projetos_de_lei" Role="projetos_de_lei" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parlamentares">
+              <PropertyRef Name="id_parlamentar" />
+            </Principal>
+            <Dependent Role="projetos_de_lei">
+              <PropertyRef Name="id_autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_remuneracao_servidores_servidores">
+          <End Type="Se_Liga_MogiModel1.servidores" Role="servidores" Multiplicity="1" />
+          <End Type="Se_Liga_MogiModel1.remuneracao_servidores" Role="remuneracao_servidores" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="servidores">
+              <PropertyRef Name="id_servidor" />
+            </Principal>
+            <Dependent Role="remuneracao_servidores">
+              <PropertyRef Name="id_servidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Se_Liga_MogiModel1StoreContainer" CdmEntityContainer="Se_Liga_MogiEntities1">
+          <EntitySetMapping Name="servidores">
+            <EntityTypeMapping TypeName="Se_Liga_MogiModel1.servidores">
+              <MappingFragment StoreEntitySet="servidores">
+                <ScalarProperty Name="descontos_servidor" ColumnName="descontos_servidor" />
+                <ScalarProperty Name="salario_liquido_servidor" ColumnName="salario_liquido_servidor" />
+                <ScalarProperty Name="id_servidor" ColumnName="id_servidor" />
+                <ScalarProperty Name="rgf" ColumnName="rgf" />
+                <ScalarProperty Name="nome_servidor" ColumnName="nome_servidor" />
+                <ScalarProperty Name="cargo_servidor" ColumnName="cargo_servidor" />
+                <ScalarProperty Name="salario_servidor" ColumnName="salario_servidor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="descontos_servidores">
+            <EntityTypeMapping TypeName="Se_Liga_MogiModel1.descontos_servidores">
+              <MappingFragment StoreEntitySet="descontos_servidores">
+                <ScalarProperty Name="valor_desconto" ColumnName="valor_desconto" />
+                <ScalarProperty Name="nome_desconto" ColumnName="nome_desconto" />
+                <ScalarProperty Name="id_servidor" ColumnName="id_servidor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="diarias_e_passagens">
+            <EntityTypeMapping TypeName="Se_Liga_MogiModel1.diarias_e_passagens">
+              <MappingFragment StoreEntitySet="diarias_e_passagens">
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
+                <ScalarProperty Name="destino" ColumnName="destino" />
+                <ScalarProperty Name="data_fim" ColumnName="data_fim" />
+                <ScalarProperty Name="data_inicio" ColumnName="data_inicio" />
+                <ScalarProperty Name="id_servidor" ColumnName="id_servidor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parlamentares">
+            <EntityTypeMapping TypeName="Se_Liga_MogiModel1.parlamentares">
+              <MappingFragment StoreEntitySet="parlamentares">
+                <ScalarProperty Name="total_faltas" ColumnName="total_faltas" />
+                <ScalarProperty Name="cargo_parlamentar" ColumnName="cargo_parlamentar" />
+                <ScalarProperty Name="nome_parlamentar" ColumnName="nome_parlamentar" />
+                <ScalarProperty Name="id_parlamentar" ColumnName="id_parlamentar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presenca_parlamentares">
+            <EntityTypeMapping TypeName="Se_Liga_MogiModel1.presenca_parlamentares">
+              <MappingFragment StoreEntitySet="presenca_parlamentares">
+                <ScalarProperty Name="motivo_da_falta" ColumnName="motivo_da_falta" />
+                <ScalarProperty Name="falta_ou_nao" ColumnName="falta_ou_nao" />
+                <ScalarProperty Name="data_presença" ColumnName="data_presença" />
+                <ScalarProperty Name="id_parlamentar" ColumnName="id_parlamentar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projetos_de_lei">
+            <EntityTypeMapping TypeName="Se_Liga_MogiModel1.projetos_de_lei">
+              <MappingFragment StoreEntitySet="projetos_de_lei">
+                <ScalarProperty Name="anotacoes" ColumnName="anotacoes" />
+                <ScalarProperty Name="assunto" ColumnName="assunto" />
+                <ScalarProperty Name="id_autor" ColumnName="id_autor" />
+                <ScalarProperty Name="numero_projeto" ColumnName="numero_projeto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="remuneracao_servidores">
+            <EntityTypeMapping TypeName="Se_Liga_MogiModel1.remuneracao_servidores">
+              <MappingFragment StoreEntitySet="remuneracao_servidores">
+                <ScalarProperty Name="valor_remuneracao" ColumnName="valor_remuneracao" />
+                <ScalarProperty Name="nome_remuneracao" ColumnName="nome_remuneracao" />
+                <ScalarProperty Name="id_servidor" ColumnName="id_servidor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
