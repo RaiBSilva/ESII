@@ -12,16 +12,16 @@ servidoresPublicos = []
 remuneracaoServidores = []
 descontosServidores = []
 
-for i in range(0, len(rgfServidores)):
-    link = 'http://www.licitacao.pmmc.com.br/Transparencia/detalhamento?rgf=' + rgfServidores[i]
+for rgf in rgfServidores:
+    link = 'http://www.licitacao.pmmc.com.br/Transparencia/detalhamento?rgf=' + rgf
     while True:
         try:
             objMogi = sitePMC.siteMogi(link)
             text = objMogi.getTexto()
-            servidoresPublicos.append(objMogi.extraiDetalhamento(text,rgfServidores[i]))
-            remuneracaoServidores.append(objMogi.extraiRendimentos(rgfServidores[i]))
+            servidoresPublicos.append(objMogi.extraiDetalhamento(text,rgf))
+            remuneracaoServidores.append(objMogi.extraiRendimentos(rgf))
             try:
-                descontosServidores.append(objMogi.extraiDescontos(rgfServidores[i]))
+                descontosServidores.append(objMogi.extraiDescontos(rgf))
             except:
                 pass
         except:
