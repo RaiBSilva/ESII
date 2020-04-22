@@ -18,7 +18,7 @@ for rgf in rgfServidores:
         try:
             objMogi = sitePMC.siteMogi(link)
             text = objMogi.getTexto()
-            servidoresPublicos.append(objMogi.extraiDetalhamento(text,rgf))
+            servidoresPublicos.append(objMogi.extraiDetalhamento(text, rgf))
             remuneracaoServidores.append(objMogi.extraiRendimentos(rgf))
             try:
                 descontosServidores.append(objMogi.extraiDescontos(rgf))
@@ -31,7 +31,7 @@ for rgf in rgfServidores:
 
 remuneracaoServidores = objMogi.organizaLista(remuneracaoServidores)
 descontosServidores = objMogi.organizaLista(descontosServidores)
-objDB.insertInTBservidores(servidoresPublicos)
-objDB.insertInTBdescontos(descontosServidores)
-objDB.insertInTBremuneracao(remuneracaoServidores)
+objDB.insertManyInTB(servidoresPublicos, 'INSERT INTO servidores(rgf, nome_servidor, cargo_servidor, salario_servidor,salario_liquido_servidor,descontos_servidor) VALUES (?, ?, ?, ?, ?, ?);')
+objDB.insertManyInTB(descontosServidores, 'INSERT INTO remuneracao_servidores(rgf, nome_remuneracao, valor_remuneracao) VALUES (?, ?, ?);')
+objDB.insertManyInTB(remuneracaoServidores, 'INSERT INTO descontos_servidores(rgf, nome_desconto, valor_desconto) VALUES (?, ?, ?);')
 
