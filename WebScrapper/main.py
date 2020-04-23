@@ -29,8 +29,14 @@ for rgf in rgfServidores:
         else:
             break
 
+#limpa o banco para a atualização dos dados
+objDB.execProcedureTruncateTables()
+
+#organização das listas de tuplas
 remuneracaoServidores = objMogi.organizaLista(remuneracaoServidores)
 descontosServidores = objMogi.organizaLista(descontosServidores)
+
+#inserção dos dados no banco
 objDB.insertManyInTB(servidoresPublicos, 'INSERT INTO servidores(rgf, nome_servidor, cargo_servidor, salario_servidor,salario_liquido_servidor,descontos_servidor) VALUES (?, ?, ?, ?, ?, ?);')
 objDB.insertManyInTB(descontosServidores, 'INSERT INTO remuneracao_servidores(rgf, nome_remuneracao, valor_remuneracao) VALUES (?, ?, ?);')
 objDB.insertManyInTB(remuneracaoServidores, 'INSERT INTO descontos_servidores(rgf, nome_desconto, valor_desconto) VALUES (?, ?, ?);')
