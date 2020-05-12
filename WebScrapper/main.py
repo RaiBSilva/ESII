@@ -15,7 +15,7 @@ descontosServidores = []
 for rgf in rgfServidores:
     link = 'http://www.licitacao.pmmc.com.br/Transparencia/detalhamento?rgf=' + rgf
     tentativasDeAcesso = 0
-    while tentativasDeAcesso < 15:
+    while tentativasDeAcesso <= 15:
         try:
             objMogi = sitePMC.siteMogi(link)
             text = objMogi.getTexto()
