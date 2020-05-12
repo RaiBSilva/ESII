@@ -14,7 +14,8 @@ descontosServidores = []
 
 for rgf in rgfServidores:
     link = 'http://www.licitacao.pmmc.com.br/Transparencia/detalhamento?rgf=' + rgf
-    while True:
+    tentativasDeAcesso = 0
+    while tentativasDeAcesso < 15:
         try:
             objMogi = sitePMC.siteMogi(link)
             text = objMogi.getTexto()
@@ -26,11 +27,12 @@ for rgf in rgfServidores:
                 pass
         except:
             print('Acessando novamente ' + link)
+            tentativasDeAcesso = tentativasDeAcesso + 1
         else:
             break
 
 #limpa o banco para a atualização dos dados
-objDB.execProcedureTruncateTables()
+objDB.execTruncateTables()
 
 #organização das listas de tuplas
 remuneracaoServidores = objMogi.organizaLista(remuneracaoServidores)
