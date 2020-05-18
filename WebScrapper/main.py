@@ -40,6 +40,6 @@ descontosServidores = objMogi.organizaLista(descontosServidores)
 
 #inserção dos dados no banco
 objDB.insertManyInTB(servidoresPublicos, 'INSERT INTO servidores(rgf, nome_servidor, cargo_servidor, salario_servidor,salario_liquido_servidor,descontos_servidor) VALUES (?, ?, ?, ?, ?, ?);')
-objDB.insertManyInTB(descontosServidores, 'INSERT INTO remuneracao_servidores(rgf, nome_remuneracao, valor_remuneracao) VALUES (?, ?, ?);')
-objDB.insertManyInTB(remuneracaoServidores, 'INSERT INTO descontos_servidores(rgf, nome_desconto, valor_desconto) VALUES (?, ?, ?);')
+objDB.insertManyInTB(remuneracaoServidores, 'INSERT INTO remuneracao_servidores(rgf, nome_remuneracao, valor_remuneracao) VALUES (?, ?, ?);')
+objDB.insertManyInTB(descontosServidores, 'INSERT INTO descontos_servidores(rgf, nome_desconto, valor_desconto) VALUES (?, ?, ?);')
 
