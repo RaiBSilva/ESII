@@ -2,7 +2,7 @@ import sitePMC
 import funcoesBD
 
 
-objDB = funcoesBD.dataBase("DSN=abc;Server=localhost\sqlexpress;Database=Se_Liga_Mogi;Trusted_connection=yes;")
+objDB = funcoesBD.dataBase("DSN=SQLEXPRESS;Server=localhost\sqlexpress;Database=Se_Liga_Mogi;Trusted_connection=yes;")
 
 objMogi = sitePMC.siteMogi('http://www.licitacao.pmmc.com.br/Transparencia/vencimentos2')
 text = objMogi.getTexto()

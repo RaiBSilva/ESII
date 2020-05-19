@@ -57,13 +57,13 @@
 </table>
 
 <div style="display:block; position:relative; width: 315px; left: calc(85% - 152px);">
-    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }), new PagedListRenderOptions
-    {
-        DisplayLinkToFirstPage = PagedListDisplayMode.Never,
-                                                                                                            DisplayLinkToLastPage = PagedListDisplayMode.Never,
-                                                                                                            DisplayLinkToNextPage = PagedListDisplayMode.Always,
-                                                                                                            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
-                                                                                                            MaximumPageNumbersToDisplay = 5,
-                                                                                                            DisplayEllipsesWhenNotShowingAllPageNumbers = false
-    })
+    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, currentFilter = ViewBag.CurrentFilter, Pesquisa = ViewBag.Pesquisa }), new PagedListRenderOptions
+{
+    DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+    DisplayLinkToLastPage = PagedListDisplayMode.Never,
+    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+    MaximumPageNumbersToDisplay = 5,
+    DisplayEllipsesWhenNotShowingAllPageNumbers = false
+})
 </div>

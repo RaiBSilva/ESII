@@ -22,6 +22,7 @@ namespace se_liga_mogi.Controllers
                 q = q.Where(c => c.nome_servidor.Contains(Pesquisa));
             }
             q = q.OrderBy(c => c.nome_servidor);
+            ViewBag.CurrentSort = Pesquisa;
             return View(q.ToPagedList(pagina, 10));
         }
         public ActionResult Detalhes(int? id)
