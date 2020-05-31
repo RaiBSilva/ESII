@@ -1,0 +1,50 @@
+﻿@model PagedList.PagedList<se_liga_mogi.Models.projetos_de_lei>
+
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Projetos de lei";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Projetos de lei</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Autor do Projeto
+        </th>
+        <th>
+            Assunto
+        </th>
+        <th>
+            Anotação
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.autor_projeto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.assunto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.anotacao)
+        </td>
+    </tr>
+}
+</table>
+
+<div style="display:block; position:relative; width: 315px; left: calc(85% - 152px);">
+    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, currentFilter = ViewBag.CurrentFilter, Pesquisa = ViewBag.Pesquisa }), new PagedListRenderOptions
+    {
+        DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+        DisplayLinkToLastPage = PagedListDisplayMode.Never,
+        DisplayLinkToNextPage = PagedListDisplayMode.Always,
+        DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+        MaximumPageNumbersToDisplay = 5,
+        DisplayEllipsesWhenNotShowingAllPageNumbers = false
+    })
+</div>

@@ -1,0 +1,50 @@
+﻿@model se_liga_mogi.Models.parlamentares
+
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalhes</title>
+</head>
+<body>
+    <div>
+        <h4>Parlamentar</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Nome do parlamentar
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.nome_parlamentar)
+            </dd>
+    
+            <dt>
+                Cargo
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.cargo_parlamentar)
+            </dd>
+    
+            <dt>
+                Total de faltas
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.total_faltas)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Voltar à lista", "Index", "parlamentares", new { area = "" }, new { @class = "btn btn-info btn-sm" })
+        @Html.ActionLink("Visualizar presenças, faltas e justificativas", "Presenca", "parlamentares", new { area = "" }, new { @class = "btn btn-info btn-sm" })
+    </p>
+</body>
+</html>

@@ -16,7 +16,7 @@ namespace se_liga_mogi.Models
     {
         public int id_presenca { get; set; }
         public int id_parlamentar { get; set; }
-        public System.DateTime data_presenca { get; set; }
+        public System.DateTime id_parlamentar { get; set; }
         public bool falta_ou_nao { get; set; }
         public string motivo_da_falta { get; set; }
     

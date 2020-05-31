@@ -1,0 +1,55 @@
+﻿@model PagedList.PagedList<se_liga_mogi.Models.parlamentares>
+
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Parlamentares";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Nome do parlamentar
+        </th>
+        <th>
+            Cargo
+        </th>
+        <th>
+            Total de faltas
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome_parlamentar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cargo_parlamentar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total_faltas)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id_parlamentar }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id_parlamentar }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id_parlamentar })
+            </td>
+        </tr>
+    }
+
+</table>
+<div style="display:block; position:relative; width: 315px; left: calc(85% - 152px);">
+    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, currentFilter = ViewBag.CurrentFilter, Pesquisa = ViewBag.Pesquisa }), new PagedListRenderOptions
+    {
+        DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+        DisplayLinkToLastPage = PagedListDisplayMode.Never,
+        DisplayLinkToNextPage = PagedListDisplayMode.Always,
+        DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+        MaximumPageNumbersToDisplay = 5,
+        DisplayEllipsesWhenNotShowingAllPageNumbers = false
+    })
+</div>
+
