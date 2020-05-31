@@ -1,0 +1,43 @@
+﻿@model IEnumerable<se_liga_mogi.Models.presenca_parlamentares>
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div>
+        <h4>Detalhes dos parlamentar</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                Nome do servidor
+            </dt>
+
+            <dd>
+                ViewBag.nomeParlamentar;
+            </dd>
+
+
+        </dl>
+
+        <table class="table">
+            @foreach (var item in Model)
+            {
+            <tr class="table-light">
+                <td>
+                    @Html.DisplayFor(modelItem => item.data_presenca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.falta_ou_nao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.motivo_da_falta)
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+<p>
+    @Html.ActionLink("Voltar à lista", "Index", "Home", new { area = "" }, new { @class = "btn btn-info btn-sm" })
+</p>
+
