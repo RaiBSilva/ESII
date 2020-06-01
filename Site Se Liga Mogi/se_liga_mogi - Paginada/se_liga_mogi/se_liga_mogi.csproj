@@ -139,6 +139,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\parlamentaresController.cs" />
+    <Compile Include="Controllers\projetos_de_leiController.cs" />
     <Compile Include="Controllers\servidoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -342,6 +343,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\parlamentares\Index.cshtml" />
     <Content Include="Views\parlamentares\Detalhes.cshtml" />
+    <Content Include="Views\projetos_de_lei\Index.cshtml" />
+    <Content Include="Views\projetos_de_lei\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

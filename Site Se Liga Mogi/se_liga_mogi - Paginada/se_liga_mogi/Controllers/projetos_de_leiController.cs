@@ -6,41 +6,38 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using PagedList;
+using System.Web.UI;
 using se_liga_mogi.Models;
+using PagedList;
 
 namespace se_liga_mogi.Controllers
 {
-    public class parlamentaresController : Controller
+    public class projetos_de_leiController : Controller 
     {
         private Se_Liga_MogiEntities1 db = new Se_Liga_MogiEntities1();
-
         public ActionResult Index(int pagina = 1, string Pesquisa = "")
         {
-            var q = db.parlamentares.AsQueryable();
+            var q = db.projetos_de_lei.AsQueryable();
             if (!string.IsNullOrEmpty(Pesquisa))
             {
-                q = q.Where(c => c.nome_parlamentar.Contains(Pesquisa));
+                q = q.Where(c => c.autor_projeto.Contains(Pesquisa));
             }
-            q = q.OrderBy(c => c.nome_parlamentar);
+            q = q.OrderBy(c => c.autor_projeto);
             ViewBag.CurrentSort = Pesquisa;
             return View(q.ToPagedList(pagina, 10));
         }
-
         public ActionResult Detalhes(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            parlamentares parlamentares = db.parlamentares.Find(id);
-            if (parlamentares == null)
+            projetos_de_lei projetos_de_lei = db.projetos_de_lei.Find(id);
+            if (projetos_de_lei == null)
             {
                 return HttpNotFound();
             }
-            presenca_parlamentares presenca = db.presenca_parlamentares.Find(id);
-            ViewBag.nomeParlamentar = parlamentares.nome_parlamentar;
-            return View(presenca);
+            return View(projetos_de_lei);
         }
     }
 }

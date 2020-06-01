@@ -1,0 +1,70 @@
+﻿@model PagedList.PagedList<se_liga_mogi.Models.projetos_de_lei>
+
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarColor03">
+        @using (Html.BeginForm("Index", "projetos_de_lei", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" }))
+        {
+            <span style="margin-right: 10px">Buscar pelo Nome: </span>
+            @Html.TextBox("Pesquisa", "", new { @class = "form-control mr-sm-2" })
+            <button class="btn btn-info my-2 my-sm-0" type="submit" value="Pesquisar">Buscar</button>
+        }
+    </div>
+</nav>
+
+<table class="table">
+    <tr class="table-info">
+        <th>
+            Nº Projeto
+        </th>
+        <th>
+            Autor do Projeto
+        </th>
+        <th>
+            Assunto
+        </th>
+        <th>
+            Anotação
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="table-light">
+            <td>
+                @Html.DisplayFor(modelItem => item.numero_projeto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.autor_projeto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.assunto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.anotacao)
+            </td>
+            <td>
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.numero_projeto }, new { @class = "btn btn-info btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div style="display:block; position:relative; width: 315px; left: calc(85% - 152px);">
+    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, currentFilter = ViewBag.CurrentFilter, Pesquisa = ViewBag.Pesquisa }), new PagedListRenderOptions
+{
+    DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+    DisplayLinkToLastPage = PagedListDisplayMode.Never,
+    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+    MaximumPageNumbersToDisplay = 5,
+    DisplayEllipsesWhenNotShowingAllPageNumbers = false
+})
+</div>
