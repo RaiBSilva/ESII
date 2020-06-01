@@ -26,23 +26,37 @@ namespace se_liga_mogi.Controllers
             ViewBag.CurrentSort = Pesquisa;
             return View(q.ToPagedList(pagina, 10));
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c
         public ActionResult Detalhes(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+<<<<<<< HEAD
             parlamentares parlamentares= db.parlamentares.Find(id);
+=======
+            parlamentares parlamentares = db.parlamentares.Find(id);
+>>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c
             if (parlamentares == null)
             {
                 return HttpNotFound();
             }
+<<<<<<< HEAD
             return View(parlamentares);
         }
         public ActionResult Presenca(int pagina = 1)
         {
             var q = db.presenca_parlamentares.AsQueryable();
             return View(q.ToPagedList(pagina, 10));
+=======
+            presenca_parlamentares presenca = db.presenca_parlamentares.Find(id);
+            ViewBag.nomeParlamentar = parlamentares.nome_parlamentar;
+            return View(presenca);
+>>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c
         }
     }
 }

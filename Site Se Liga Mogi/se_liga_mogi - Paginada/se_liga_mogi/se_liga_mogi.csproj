@@ -342,12 +342,19 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+<<<<<<< HEAD
     <Content Include="Views\parlamentares\Detalhes.cshtml" />
     <Content Include="Views\parlamentares\Index.cshtml" />
     <Content Include="Views\parlamentares\Presenca.cshtml" />
     <Content Include="Views\diarias_e_passagens\Index.cshtml" />
     <Content Include="Views\projetos_de_lei\Details.cshtml" />
     <Content Include="Views\projetos_de_lei\Index.cshtml" />
+=======
+    <Content Include="Views\parlamentares\Index.cshtml" />
+    <Content Include="Views\parlamentares\Detalhes.cshtml" />
+    <Content Include="Views\projetos_de_lei\Index.cshtml" />
+    <Content Include="Views\projetos_de_lei\Detalhes.cshtml" />
+>>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
