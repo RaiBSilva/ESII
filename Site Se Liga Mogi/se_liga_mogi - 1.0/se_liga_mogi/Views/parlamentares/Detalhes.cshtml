@@ -1,0 +1,108 @@
+<<<<<<< HEAD
+﻿@model se_liga_mogi.Models.parlamentares
+
+=======
+﻿@model IEnumerable<se_liga_mogi.Models.presenca_parlamentares>
+>>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<<<<<<< HEAD
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalhes</title>
+</head>
+<body>
+    <div>
+        <h4>Parlamentar</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Nome do parlamentar
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.nome_parlamentar)
+            </dd>
+    
+            <dt>
+                Cargo
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.cargo_parlamentar)
+            </dd>
+    
+            <dt>
+                Total de faltas
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.total_faltas)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Voltar à lista", "Index", "parlamentares", new { area = "" }, new { @class = "btn btn-info btn-sm" })
+        @Html.ActionLink("Visualizar presenças, faltas e justificativas", "Presenca", "parlamentares", new { area = "" }, new { @class = "btn btn-info btn-sm" })
+    </p>
+</body>
+</html>
+=======
+
+    <div>
+        <h4>Detalhes dos parlamentar</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                Nome do servidor
+            </dt>
+
+            <dd>
+                ViewBag.nomeParlamentar;
+            </dd>
+
+
+        </dl>
+
+        <table class="table">
+
+            <tr class="table-info">
+                <th>
+                    Data
+                </th>
+                <th>
+                    Presente?
+                </th>
+                <th>
+                    Motivo
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr class="table-light">
+                <td>
+                    @Html.DisplayFor(modelItem => item.data_presenca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.falta_ou_nao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.motivo_da_falta)
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+<p>
+    @Html.ActionLink("Voltar à lista", "Index", "Home", new { area = "" }, new { @class = "btn btn-info btn-sm" })
+</p>
+
+>>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c

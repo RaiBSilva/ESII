@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Se_Liga_MogiModel1StoreContainer" CdmEntityContainer="Se_Liga_MogiEntities1">
+    <EntitySetMapping Name="descontos_servidores">
+      <EntityTypeMapping TypeName="Se_Liga_MogiModel1.descontos_servidores">
+        <MappingFragment StoreEntitySet="descontos_servidores">
+          <ScalarProperty Name="valor_desconto" ColumnName="valor_desconto" />
+          <ScalarProperty Name="nome_desconto" ColumnName="nome_desconto" />
+          <ScalarProperty Name="rgf" ColumnName="rgf" />
+          <ScalarProperty Name="id_desconto" ColumnName="id_desconto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="diarias_e_passagens">
+      <EntityTypeMapping TypeName="Se_Liga_MogiModel1.diarias_e_passagens">
+        <MappingFragment StoreEntitySet="diarias_e_passagens">
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="motivo" ColumnName="motivo" />
+          <ScalarProperty Name="destino" ColumnName="destino" />
+          <ScalarProperty Name="data_fim" ColumnName="data_fim" />
+          <ScalarProperty Name="data_inicio" ColumnName="data_inicio" />
+          <ScalarProperty Name="rgf" ColumnName="rgf" />
+          <ScalarProperty Name="id_diaria_passagem" ColumnName="id_diaria_passagem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parlamentares">
+      <EntityTypeMapping TypeName="Se_Liga_MogiModel1.parlamentares">
+        <MappingFragment StoreEntitySet="parlamentares">
+          <ScalarProperty Name="total_faltas" ColumnName="total_faltas" />
+          <ScalarProperty Name="cargo_parlamentar" ColumnName="cargo_parlamentar" />
+          <ScalarProperty Name="nome_parlamentar" ColumnName="nome_parlamentar" />
+          <ScalarProperty Name="id_parlamentar" ColumnName="id_parlamentar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="presenca_parlamentares">
+      <EntityTypeMapping TypeName="Se_Liga_MogiModel1.presenca_parlamentares">
+        <MappingFragment StoreEntitySet="presenca_parlamentares">
+          <ScalarProperty Name="motivo_da_falta" ColumnName="motivo_da_falta" />
+          <ScalarProperty Name="falta_ou_nao" ColumnName="falta_ou_nao" />
+          <ScalarProperty Name="data_presenca" ColumnName="data_presenca" />
+          <ScalarProperty Name="id_parlamentar" ColumnName="id_parlamentar" />
+          <ScalarProperty Name="id_presenca" ColumnName="id_presenca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projetos_de_lei">
+      <EntityTypeMapping TypeName="Se_Liga_MogiModel1.projetos_de_lei">
+        <MappingFragment StoreEntitySet="projetos_de_lei">
+          <ScalarProperty Name="anotacao" ColumnName="anotacao" />
+          <ScalarProperty Name="assunto" ColumnName="assunto" />
+          <ScalarProperty Name="autor_projeto" ColumnName="autor_projeto" />
+          <ScalarProperty Name="numero_projeto" ColumnName="numero_projeto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="remuneracao_servidores">
+      <EntityTypeMapping TypeName="Se_Liga_MogiModel1.remuneracao_servidores">
+        <MappingFragment StoreEntitySet="remuneracao_servidores">
+          <ScalarProperty Name="valor_remuneracao" ColumnName="valor_remuneracao" />
+          <ScalarProperty Name="nome_remuneracao" ColumnName="nome_remuneracao" />
+          <ScalarProperty Name="rgf" ColumnName="rgf" />
+          <ScalarProperty Name="id_remuneracao" ColumnName="id_remuneracao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="servidores">
+      <EntityTypeMapping TypeName="Se_Liga_MogiModel1.servidores">
+        <MappingFragment StoreEntitySet="servidores">
+          <ScalarProperty Name="descontos_servidor" ColumnName="descontos_servidor" />
+          <ScalarProperty Name="salario_liquido_servidor" ColumnName="salario_liquido_servidor" />
+          <ScalarProperty Name="salario_servidor" ColumnName="salario_servidor" />
+          <ScalarProperty Name="cargo_servidor" ColumnName="cargo_servidor" />
+          <ScalarProperty Name="nome_servidor" ColumnName="nome_servidor" />
+          <ScalarProperty Name="rgf" ColumnName="rgf" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

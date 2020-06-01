@@ -1,0 +1,107 @@
+﻿@model PagedList.PagedList<se_liga_mogi.Models.parlamentares>
+
+@using PagedList.Mvc;
+
+@{
+<<<<<<< HEAD
+    ViewBag.Title = "Parlamentares";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Nome do parlamentar
+        </th>
+        <th>
+            Cargo
+        </th>
+        <th>
+            Total de faltas
+        </th>
+=======
+    ViewBag.Title = "Home Page";
+}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarColor03">
+        @using (Html.BeginForm("Index", "parlamentares", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" }))
+        {
+            <span style="margin-right: 10px">Buscar pelo Nome: </span>
+            @Html.TextBox("Pesquisa", "", new { @class = "form-control mr-sm-2" })
+            <button class="btn btn-info my-2 my-sm-0" type="submit" value="Pesquisar">Buscar</button>
+        }
+    </div>
+</nav>
+
+<table class="table">
+    <tr class="table-info">
+        <th>
+            Nome do Parlamentar
+        </th>
+        <th>
+            Cargo do Parlamentar
+        </th>
+        <th>
+            Total de Faltas
+        </th>
+        <th></th>
+>>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<<<<<<< HEAD
+        <tr>
+=======
+        <tr class="table-light">
+>>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c
+            <td>
+                @Html.DisplayFor(modelItem => item.nome_parlamentar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cargo_parlamentar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total_faltas)
+            </td>
+            <td>
+<<<<<<< HEAD
+                @Html.ActionLink("Edit", "Edit", new { id = item.id_parlamentar }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id_parlamentar }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id_parlamentar })
+=======
+                @Html.ActionLink("Detalhes", "Detalhes", new { id = item.id_parlamentar }, new { @class = "btn btn-info btn-sm" })
+>>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c
+            </td>
+        </tr>
+    }
+
+</table>
+<<<<<<< HEAD
+<div style="display:block; position:relative; width: 315px; left: calc(85% - 152px);">
+    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, currentFilter = ViewBag.CurrentFilter, Pesquisa = ViewBag.Pesquisa }), new PagedListRenderOptions
+    {
+        DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+        DisplayLinkToLastPage = PagedListDisplayMode.Never,
+        DisplayLinkToNextPage = PagedListDisplayMode.Always,
+        DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+        MaximumPageNumbersToDisplay = 5,
+        DisplayEllipsesWhenNotShowingAllPageNumbers = false
+    })
+</div>
+
+=======
+
+<div style="display:block; position:relative; width: 315px; left: calc(85% - 152px);">
+    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, currentFilter = ViewBag.CurrentFilter, Pesquisa = ViewBag.Pesquisa }), new PagedListRenderOptions
+{
+    DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+    DisplayLinkToLastPage = PagedListDisplayMode.Never,
+    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+    MaximumPageNumbersToDisplay = 5,
+    DisplayEllipsesWhenNotShowingAllPageNumbers = false
+})
+</div>
+>>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c
