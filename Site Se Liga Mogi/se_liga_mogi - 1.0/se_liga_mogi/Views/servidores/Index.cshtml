@@ -11,6 +11,17 @@
         {
             <span style="margin-right: 10px">Buscar pelo Nome: </span>
             @Html.TextBox("Pesquisa", "", new { @class = "form-control mr-sm-2" })
+            <span style="margin-right: 10px">Buscar por intervalo de: </span>
+            @Html.RadioButton("Filtro", "s")
+            <span style="margin-right: 10px">Salário </span>
+            @Html.RadioButton("Filtro", "d")
+            <span style="margin-right: 10px">Desconto </span>
+            @Html.RadioButton("Filtro", "r")
+            <span style="margin-right: 10px">Referência </span>
+            <span style="margin-right: 10px">Valor mínimo: </span>
+            @Html.TextBox("Min", "", new { @class = "form-control mr-sm-2", type = "number" })
+            <span style="margin-right: 10px">Valor máximo: </span>
+            @Html.TextBox("Max", "", new { @class = "form-control mr-sm-2", type = "number" })
             <button class="btn btn-info my-2 my-sm-0" type="submit" value="Pesquisar">Buscar</button>
         }
     </div>
@@ -57,7 +68,7 @@
 </table>
 
 <div style="display:block; position:relative; width: 315px; left: calc(85% - 152px);">
-    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, currentFilter = ViewBag.CurrentFilter, Pesquisa = ViewBag.Pesquisa }), new PagedListRenderOptions
+    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, currentFilter = ViewBag.CurrentFilter, Pesquisa = ViewBag.CurrentSort, Filtro = ViewBag.FiltroAtual, min = ViewBag.Min, max = ViewBag.Max }), new PagedListRenderOptions
 {
     DisplayLinkToFirstPage = PagedListDisplayMode.Never,
     DisplayLinkToLastPage = PagedListDisplayMode.Never,
@@ -65,5 +76,5 @@
     DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
     MaximumPageNumbersToDisplay = 5,
     DisplayEllipsesWhenNotShowingAllPageNumbers = false
-})
+}),
 </div>
