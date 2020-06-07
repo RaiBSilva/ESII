@@ -9,13 +9,13 @@
         <EntityTypeShape EntityType="Se_Liga_MogiModel1.diarias_e_passagens" Width="1.5" PointX="3" PointY="1.25" />
         <EntityTypeShape EntityType="Se_Liga_MogiModel1.parlamentares" Width="1.5" PointX="5.75" PointY="1" />
         <EntityTypeShape EntityType="Se_Liga_MogiModel1.presenca_parlamentares" Width="1.5" PointX="8" PointY="0.875" />
-        <EntityTypeShape EntityType="Se_Liga_MogiModel1.projetos_de_lei" Width="1.5" PointX="5.75" PointY="4.75" />
         <EntityTypeShape EntityType="Se_Liga_MogiModel1.remuneracao_servidores" Width="1.5" PointX="3" PointY="7.25" />
         <EntityTypeShape EntityType="Se_Liga_MogiModel1.servidores" Width="1.5" PointX="0.75" PointY="3.875" />
         <AssociationConnector Association="Se_Liga_MogiModel1.FK_descontos_servidores_servidores" />
         <AssociationConnector Association="Se_Liga_MogiModel1.FK_diarias_e_passagens_servidores" />
         <AssociationConnector Association="Se_Liga_MogiModel1.FK_presenca_parlamentares_parlamentares" />
         <AssociationConnector Association="Se_Liga_MogiModel1.FK_remuneracao_servidores_servidores" />
+        <EntityTypeShape EntityType="Se_Liga_MogiModel1.projetos_de_lei" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

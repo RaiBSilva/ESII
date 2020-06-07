@@ -53,6 +53,7 @@
           <Property Name="autor_projeto" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="assunto" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="anotacao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ano_projeto" Type="varchar" MaxLength="4" Nullable="false" />
         </EntityType>
         <EntityType Name="remuneracao_servidores">
           <Key>
@@ -156,7 +157,6 @@
           <EntitySet Name="diarias_e_passagens" EntityType="Se_Liga_MogiModel1.diarias_e_passagens" />
           <EntitySet Name="parlamentares" EntityType="Se_Liga_MogiModel1.parlamentares" />
           <EntitySet Name="presenca_parlamentares" EntityType="Se_Liga_MogiModel1.presenca_parlamentares" />
-          <EntitySet Name="projetos_de_lei" EntityType="Se_Liga_MogiModel1.projetos_de_lei" />
           <EntitySet Name="remuneracao_servidores" EntityType="Se_Liga_MogiModel1.remuneracao_servidores" />
           <EntitySet Name="servidores" EntityType="Se_Liga_MogiModel1.servidores" />
           <AssociationSet Name="FK_descontos_servidores_servidores" Association="Se_Liga_MogiModel1.FK_descontos_servidores_servidores">
@@ -175,6 +175,7 @@
             <End Role="servidores" EntitySet="servidores" />
             <End Role="remuneracao_servidores" EntitySet="remuneracao_servidores" />
           </AssociationSet>
+          <EntitySet Name="projetos_de_lei" EntityType="Se_Liga_MogiModel1.projetos_de_lei" />
         </EntityContainer>
         <EntityType Name="descontos_servidores">
           <Key>
@@ -219,15 +220,6 @@
           <Property Name="falta_ou_nao" Type="Boolean" Nullable="false" />
           <Property Name="motivo_da_falta" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="parlamentares" Relationship="Se_Liga_MogiModel1.FK_presenca_parlamentares_parlamentares" FromRole="presenca_parlamentares" ToRole="parlamentares" />
-        </EntityType>
-        <EntityType Name="projetos_de_lei">
-          <Key>
-            <PropertyRef Name="numero_projeto" />
-          </Key>
-          <Property Name="numero_projeto" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="autor_projeto" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="assunto" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="anotacao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="remuneracao_servidores">
           <Key>
@@ -301,6 +293,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="projetos_de_lei">
+          <Key>
+            <PropertyRef Name="numero_projeto" />
+          </Key>
+          <Property Name="numero_projeto" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="autor_projeto" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="assunto" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="anotacao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ano_projeto" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -351,16 +353,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="projetos_de_lei">
-            <EntityTypeMapping TypeName="Se_Liga_MogiModel1.projetos_de_lei">
-              <MappingFragment StoreEntitySet="projetos_de_lei">
-                <ScalarProperty Name="anotacao" ColumnName="anotacao" />
-                <ScalarProperty Name="assunto" ColumnName="assunto" />
-                <ScalarProperty Name="autor_projeto" ColumnName="autor_projeto" />
-                <ScalarProperty Name="numero_projeto" ColumnName="numero_projeto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="remuneracao_servidores">
             <EntityTypeMapping TypeName="Se_Liga_MogiModel1.remuneracao_servidores">
               <MappingFragment StoreEntitySet="remuneracao_servidores">
@@ -380,6 +372,17 @@
                 <ScalarProperty Name="cargo_servidor" ColumnName="cargo_servidor" />
                 <ScalarProperty Name="nome_servidor" ColumnName="nome_servidor" />
                 <ScalarProperty Name="rgf" ColumnName="rgf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projetos_de_lei">
+            <EntityTypeMapping TypeName="Se_Liga_MogiModel1.projetos_de_lei">
+              <MappingFragment StoreEntitySet="projetos_de_lei">
+                <ScalarProperty Name="ano_projeto" ColumnName="ano_projeto" />
+                <ScalarProperty Name="anotacao" ColumnName="anotacao" />
+                <ScalarProperty Name="assunto" ColumnName="assunto" />
+                <ScalarProperty Name="autor_projeto" ColumnName="autor_projeto" />
+                <ScalarProperty Name="numero_projeto" ColumnName="numero_projeto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

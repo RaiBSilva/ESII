@@ -18,5 +18,6 @@ namespace se_liga_mogi.Models
         public string autor_projeto { get; set; }
         public string assunto { get; set; }
         public string anotacao { get; set; }
+        public string ano_projeto { get; set; }
     }
 }

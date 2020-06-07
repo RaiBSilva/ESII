@@ -29,8 +29,8 @@ namespace se_liga_mogi.Models
         public virtual DbSet<diarias_e_passagens> diarias_e_passagens { get; set; }
         public virtual DbSet<parlamentares> parlamentares { get; set; }
         public virtual DbSet<presenca_parlamentares> presenca_parlamentares { get; set; }
-        public virtual DbSet<projetos_de_lei> projetos_de_lei { get; set; }
         public virtual DbSet<remuneracao_servidores> remuneracao_servidores { get; set; }
         public virtual DbSet<servidores> servidores { get; set; }
+        public virtual DbSet<projetos_de_lei> projetos_de_lei { get; set; }
     }
 }
