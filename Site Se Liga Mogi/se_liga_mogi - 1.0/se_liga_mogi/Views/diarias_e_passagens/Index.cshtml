@@ -9,6 +9,26 @@
 
 <h2>Diarias e passagens</h2>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarColor03">
+        @using (Html.BeginForm("Index", "servidores", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" }))
+        {
+            <span style="margin-right: 10px">Buscar pelo Nome: </span>
+            @Html.TextBox("Pesquisa", "", new { @class = "form-control mr-sm-2" })
+            <span style="margin-right: 10px">Buscar por intervalo de: </span>
+            <span style="margin-right: 10px">Valor mínimo: </span>
+            @Html.TextBox("Min", "", new { @class = "form-control mr-sm-2", type = "number" })
+            <span style="margin-right: 10px">Valor máximo: </span>
+            @Html.TextBox("Max", "", new { @class = "form-control mr-sm-2", type = "number" })
+            <span style="margin-right: 10px">Data mínima: </span>
+            @Html.TextBox("DataMin", "", new { @class = "form-control mr-sm-2", type = "date" })
+            <span style="margin-right: 10px">Data máxima: </span>
+            @Html.TextBox("DataMax", "", new { @class = "form-control mr-sm-2", type = "date" })
+            <button class="btn btn-info my-2 my-sm-0" type="submit" value="Pesquisar">Buscar</button>
+        }
+    </div>
+</nav>
+
 <table class="table">
     <tr>
         <th>
@@ -31,33 +51,34 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.data_inicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data_fim)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.destino)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.motivo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.valor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.servidores.nome_servidor)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.data_inicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data_fim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.destino)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.motivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.servidores.nome_servidor)
+            </td>
+        </tr>
+    }
 
 </table>
 
 <div style="display:block; position:relative; width: 315px; left: calc(85% - 152px);">
-    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, currentFilter = ViewBag.CurrentFilter, Pesquisa = ViewBag.Pesquisa }), new PagedListRenderOptions
+    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, Pesquisa = ViewBag.Pesquisa, Min = ViewBag.Min, Max = ViewBag.Max, DataMin = ViewBag.DataMin, DataMax = ViewBag.DataMax }), new PagedListRenderOptions
     {
         DisplayLinkToFirstPage = PagedListDisplayMode.Never,
         DisplayLinkToLastPage = PagedListDisplayMode.Never,
@@ -67,3 +88,4 @@
         DisplayEllipsesWhenNotShowingAllPageNumbers = false
     })
 </div>
+

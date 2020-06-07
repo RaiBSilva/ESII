@@ -18,8 +18,8 @@ namespace se_liga_mogi.Controllers
             int pagina = 1,
             string Pesquisa = "",
             string Filtro = "",
-            int? min = 0,
-            int? max = 100000)
+            int? min = null,
+            int? max = null)
         {
             var q = db.servidores.AsQueryable();
             if (!string.IsNullOrEmpty(Pesquisa))
@@ -63,8 +63,8 @@ namespace se_liga_mogi.Controllers
                 }
             }
             q = q.OrderBy(c => c.salario_liquido_servidor);
-            ViewBag.CurrentSort = Pesquisa;
-            ViewBag.FiltroAtual = Filtro;
+            ViewBag.Pesquisa = Pesquisa;
+            ViewBag.Filtro = Filtro;
             ViewBag.Min = min;
             ViewBag.Max = max;
             return View(q.ToPagedList(pagina, 10));

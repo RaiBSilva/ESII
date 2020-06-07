@@ -68,7 +68,7 @@
 </table>
 
 <div style="display:block; position:relative; width: 315px; left: calc(85% - 152px);">
-    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, currentFilter = ViewBag.CurrentFilter, Pesquisa = ViewBag.CurrentSort, Filtro = ViewBag.FiltroAtual, min = ViewBag.Min, max = ViewBag.Max }), new PagedListRenderOptions
+    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, Pesquisa = ViewBag.Pesquisa, Filtro = ViewBag.Filtro, min = ViewBag.Min, max = ViewBag.Max }), new PagedListRenderOptions
 {
     DisplayLinkToFirstPage = PagedListDisplayMode.Never,
     DisplayLinkToLastPage = PagedListDisplayMode.Never,
