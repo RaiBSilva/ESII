@@ -10,31 +10,31 @@
 
 <h2>Projetos de lei</h2>
 
-<table class="table">
-    <tr>
-=======
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarColor03">
         @using (Html.BeginForm("Index", "projetos_de_lei", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" }))
         {
             <span style="margin-right: 10px">Buscar pelo Nome: </span>
             @Html.TextBox("Pesquisa", "", new { @class = "form-control mr-sm-2" })
+            <span style="margin-right: 10px">Buscar por ano: </span>
+            @Html.DropDownList("AnoFiltro", (SelectList) ViewBag.Anos, "Selecione o ano...", new { @class = "form-inline my-2 my-lg-0" })
             <button class="btn btn-info my-2 my-sm-0" type="submit" value="Pesquisar">Buscar</button>
         }
     </div>
 </nav>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
 
 <table class="table">
     <tr class="table-info">
         <th>
             Nº Projeto
         </th>
->>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c
         <th>
             Autor do Projeto
         </th>
@@ -44,10 +44,9 @@
         <th>
             Anotação
         </th>
-<<<<<<< HEAD
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.autor_projeto)
@@ -60,9 +59,6 @@
         </td>
     </tr>
 }
-=======
-        <th></th>
-    </tr>
 
     @foreach (var item in Model)
     {
@@ -85,12 +81,10 @@
         </tr>
     }
 
->>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c
 </table>
 
 <div style="display:block; position:relative; width: 315px; left: calc(85% - 152px);">
     @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, currentFilter = ViewBag.CurrentFilter, Pesquisa = ViewBag.Pesquisa }), new PagedListRenderOptions
-<<<<<<< HEAD
     {
         DisplayLinkToFirstPage = PagedListDisplayMode.Never,
         DisplayLinkToLastPage = PagedListDisplayMode.Never,
@@ -99,14 +93,4 @@
         MaximumPageNumbersToDisplay = 5,
         DisplayEllipsesWhenNotShowingAllPageNumbers = false
     })
-=======
-{
-    DisplayLinkToFirstPage = PagedListDisplayMode.Never,
-    DisplayLinkToLastPage = PagedListDisplayMode.Never,
-    DisplayLinkToNextPage = PagedListDisplayMode.Always,
-    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
-    MaximumPageNumbersToDisplay = 5,
-    DisplayEllipsesWhenNotShowingAllPageNumbers = false
-})
->>>>>>> bba4e350deae07d0d0ec12c2673c737beec46a7c
 </div>
