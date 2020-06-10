@@ -29,7 +29,7 @@ namespace se_liga_mogi.Controllers
             q = q.OrderBy(c => c.autor_projeto);
 
             if (!string.IsNullOrEmpty(AnoFiltro)) {
-                //q = q.Where(c => c.ano_projeto = int.Parse(AnoFiltro));
+                q = q.Where(c => c.ano_projeto == AnoFiltro);
             }       
 
             int AnoAtual = DateTime.Now.Year;
