@@ -1,7 +1,6 @@
 import Pdf04_2020
 import Pdf03_2020
 import Pdf02_2020
-import camelot
 
 # funcionarios = []
 # Pdf04_2020.LerPdf04(funcionarios)
