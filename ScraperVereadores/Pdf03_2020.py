@@ -3,7 +3,8 @@ import formatacaoNumeros as fn
 from tabulate import tabulate
 
 
-def LerPdf03(funcionarios):
+def LerPdf03():
+    funcionarios = []
     PdfFile = read_pdf("http://www.cmmc.com.br/siteadmin/downloads/arquivos/03.2020.pdf", pages='all', multiple_tables=True)
     for i in range(2, len(PdfFile[0])):
         nomeId = PdfFile[0].iloc[i, 0].split(maxsplit=1)

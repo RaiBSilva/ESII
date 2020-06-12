@@ -1,14 +1,9 @@
 import io
 from PyPDF2 import PdfFileReader
-import formatacaoNumeros
+from tratamentoDeStrings import tiraQuebraLinhaInicial
+from tratamentoDeStrings import verificaString
+from tratamentoDeStrings import mergeLinhas
 
-def verificaString(string):
-    string = string.replace(" ", "")
-    try:
-        string = string.replace("-", "")
-    except:
-        pass
-    return string.isalpha()
 
 def lerPDF(arquivoPDF):
 
@@ -19,64 +14,70 @@ def lerPDF(arquivoPDF):
         listaDePaginas.append(page.extractText())
     return listaDePaginas
 
-def filtraDados(listaDePaginas):
+
+def filtraDados02_2020(listaDePaginas):
     listaDeTabelas = []
     listaAuxiliar = []
     listaAuxiliar = listaDePaginas[0].split('LIQUIDO')
     listaAuxiliar = listaAuxiliar[1].split('Câmara Municipal de Mogi das Cruzes')
-    listaDeTabelas.append(listaAuxiliar[0])
+    listaDeTabelas.append(tiraQuebraLinhaInicial(listaAuxiliar[0]))
     for i in range(1, len(listaDePaginas)):
         listaAuxiliar = listaDePaginas[i].split('IRRF')
         listaAuxiliar = listaAuxiliar[1].strip()
-        listaAuxiliar = listaAuxiliar.rstrip('\n')
-        listaDeTabelas.append(listaAuxiliar)
+        listaDeTabelas.append(tiraQuebraLinhaInicial(listaAuxiliar))
     return listaDeTabelas
+
+
+def filtraDados04_2020(listaDePaginas):
+    listaDeTabelas = []
+    listaAuxiliar = []
+    listaAuxiliar = listaDePaginas[0].split('LÍQUIDO')
+    listaAuxiliar = listaAuxiliar[1].split("Referência")
+    listaDeTabelas.append(tiraQuebraLinhaInicial(listaAuxiliar[0]))
+    for i in range(1, len(listaDePaginas)):
+        listaDeTabelas.append(tiraQuebraLinhaInicial(listaDePaginas[i].strip()))
+    return listaDeTabelas
+
 
 def organizaFuncionarios(list):
     listaOrganizada = []
     cont = 1
-    ergf =''
-    nome = ''
-    cargo = ''
-    vencBase = ''
-    outrosVenc = ''
-    totalBruto = ''
-    previdencia = ''
-    irrf = ''
-    outrosDescont = ''
-    totalDescont = ''
-    liquido = ''
+    tupla = []
+    for i in range(0, 2): #for responsável por passar as tabelas
+        linhas = list[i].split('\n') #faz uma lista com cada dado
+        for linha in linhas: #for responsável por passar as linhas
+            if cont == 12:
+                cont = 1
+                listaOrganizada.append(tuple(tupla))
+                tupla = []
+            if cont == 4:
+                if verificaString(linha):
+                    tupla[-1] = mergeLinhas(tupla[-1], linha)
+                    cont = cont - 1
+            else:
+                tupla.append(linha.strip())
+            cont = cont + 1
+    return listaOrganizada
+
+
+def organizaFuncionarios04_2020(list):
+    listaOrganizada = []
+    cont = 1
+    tupla = []
     for i in range(0, len(list)): #for responsável por passar as tabelas
         linhas = list[i].split('\n') #faz uma lista com cada dado
         for linha in linhas: #for responsável por passar as linhas
-            if cont == 1:
-                ergf = linha
-            elif cont == 2:
-                nome = linha
-            elif cont == 3:
-                cargo = linha
-            elif cont == 4:
+            if cont == 11:
+                cont = 1
+                listaOrganizada.append(tuple(tupla))
+                tupla = []
+            if cont == 5 or cont == 3:
                 if verificaString(linha):
-                    cargo = cargo + linha
+                    tupla[-1] = mergeLinhas(tupla[-1],linha)
                     cont = cont - 1
                 else:
-                    vencBase = linha
-            elif cont == 5:
-                outrosVenc = linha
-            elif cont == 6:
-                totalBruto = linha
-            elif cont == 7:
-                previdencia = linha
-            elif cont == 8:
-                irrf = linha
-            elif cont == 9:
-                outrosDescont = linha
-            elif cont == 10:
-                totalDescont = linha
-            elif cont == 11:
-                liquido = linha
+                    tupla.append(linha.strip())
+            else:
+                tupla.append(linha.strip())
             cont = cont + 1
-            if cont == 12:
-                cont = 1
-                listaOrganizada.append((ergf, nome, cargo, vencBase, outrosVenc, totalBruto, previdencia, irrf, outrosDescont, totalDescont, liquido))
     return listaOrganizada
