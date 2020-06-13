@@ -19,9 +19,10 @@ def verificaString(string):
         pass
     return string.isalpha()
 
+
 def mergeLinhas(nome, linha):
     if nome[-1].strip() == '-':
-        nome = nome.strip() + linha
+        nome = nome.strip() + linha.strip()
     else:
-        nome = nome.strip() + ' ' + linha
+        nome = nome.strip() + ' ' + linha.strip()
     return nome
