@@ -42,14 +42,10 @@ def organizaFuncionarios(list):
     listaOrganizada = []
     cont = 1
     tupla = []
-    for i in range(0, 2):  # for responsável por passar as tabelas
+    for i in range(0, len(list)):  # for responsável por passar as tabelas
         linhas = list[i].split('\n')  # faz uma lista com cada dado
         for linha in linhas:  # for responsável por passar as linhas
             if linha != "" and len(linha.strip()) >= 2:  # linhas vazias não serão consideradas
-                if cont == 12:
-                    cont = 1
-                    listaOrganizada.append(tuple(tupla))
-                    tupla = []
                 if cont == 4:
                     if verificaString(linha):
                         tupla[-1] = mergeLinhas(tupla[-1], linha)
@@ -59,6 +55,10 @@ def organizaFuncionarios(list):
                 else:
                     tupla.append(linha.strip())
                 cont = cont + 1
+                if cont == 12:
+                    cont = 1
+                    listaOrganizada.append(tuple(tupla))
+                    tupla = []
     return listaOrganizada
 
 
@@ -69,11 +69,7 @@ def organizaFuncionarios04_2020(list):
     for i in range(0, len(list)): #for responsável por passar as tabelas
         linhas = list[i].split('\n') #faz uma lista com cada dado
         for linha in linhas: #for responsável por passar as linhas
-            if linha != "" and len(linha.strip()) >= 2:  # linhas vazias não serão consideradas
-                if cont == 11:
-                    cont = 1
-                    listaOrganizada.append(tuple(tupla))
-                    tupla = []
+            if linha != "":# linhas vazias não serão consideradas
                 if cont == 5 or cont == 3:
                     if verificaString(linha):
                         tupla[-1] = mergeLinhas(tupla[-1],linha)
@@ -83,4 +79,8 @@ def organizaFuncionarios04_2020(list):
                 else:
                     tupla.append(linha.strip())
                 cont = cont + 1
+                if cont == 11:
+                    cont = 1
+                    listaOrganizada.append(tuple(tupla))
+                    tupla = []
     return listaOrganizada

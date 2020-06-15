@@ -21,8 +21,12 @@ def verificaString(string):
 
 
 def mergeLinhas(nome, linha):
+    try:
+        linha = linha.replace(r'\r', '')
+    except:
+        pass
     if nome[-1].strip() == '-':
-        nome = nome.strip() + linha.strip()
+        nome = nome.strip() + linha
     else:
-        nome = nome.strip() + ' ' + linha.strip()
+        nome = nome.strip() + ' ' + linha
     return nome
