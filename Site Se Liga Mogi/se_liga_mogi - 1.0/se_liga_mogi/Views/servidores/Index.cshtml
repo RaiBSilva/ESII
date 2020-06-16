@@ -5,24 +5,107 @@
     ViewBag.Title = "Home Page";
 }
 
+<style>
+    div.campos_de_busca
+    {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 5px;
+    }
+    div.busca_nome
+    {
+        width: 400px;
+    }
+        div.busca_nome > .campo_de_busca_nome
+        {
+            width: 250px;
+        }
+    div.botao_buscar 
+    {
+        display: block;
+        position: relative;
+        top: -40px;
+        left: 400px;
+    }
+
+    div.filtros_extras
+    {
+        display: block;
+        position: relative;
+        width: 100%;
+        max-height: 200px;
+        #background: black;
+        top: -40px;
+        margin-bottom: -50px;
+    }
+        div.filtros_extras > div.seleciona_intervalo 
+        {
+            display: block;
+            position: relative;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        div.filtros_extras > div.valor_minimo 
+        {
+            display: block;
+            position: relative;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        div.filtros_extras > div.valor_maximo 
+        {
+            display: block;
+            position: relative;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    div.botao_mostrar_filtros 
+    {
+        display: block;
+        position: relative;
+
+    }
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarColor03">
         @using (Html.BeginForm("Index", "servidores", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" }))
         {
-            <span style="margin-right: 10px">Buscar pelo Nome: </span>
-            @Html.TextBox("Pesquisa", "", new { @class = "form-control mr-sm-2" })
-            <span style="margin-right: 10px">Buscar por intervalo de: </span>
-            @Html.RadioButton("Filtro", "s")
-            <span style="margin-right: 10px">Salário </span>
-            @Html.RadioButton("Filtro", "d")
-            <span style="margin-right: 10px">Desconto </span>
-            @Html.RadioButton("Filtro", "r")
-            <span style="margin-right: 10px">Referência </span>
-            <span style="margin-right: 10px">Valor mínimo: </span>
-            @Html.TextBox("Min", "", new { @class = "form-control mr-sm-2", type = "number" })
-            <span style="margin-right: 10px">Valor máximo: </span>
-            @Html.TextBox("Max", "", new { @class = "form-control mr-sm-2", type = "number" })
-            <button class="btn btn-info my-2 my-sm-0" type="submit" value="Pesquisar">Buscar</button>
+        <div class="campos_de_busca">
+            <div class="busca_nome">
+                <span style="margin-right: 10px">Buscar pelo Nome: </span>
+                @Html.TextBox("Pesquisa", "", new { @class = "campo_de_busca_nome form-control mr-sm-2" })
+            </div>
+            <div class="botao_buscar">
+                <button class="btn btn-info my-2 my-sm-0" type="submit" value="Pesquisar">Buscar</button>
+            </div>
+            <div class="filtros_extras">
+                <div class="seleciona_intervalo">
+                    <span style="margin-right: 10px">Buscar por intervalo de: </span>
+                    <p style="margin-bottom: -10px">&nbsp;</p>
+                    @Html.RadioButton("Filtro", "s", new { @class = "botoes_radio"})
+                    <span>Salário</span>
+                    @Html.RadioButton("Filtro", "d", new { @class = "botoes_radio" })
+                    <span>Desconto </span>
+                    @Html.RadioButton("Filtro", "r", new { @class = "botoes_radio" })
+                    <span>Referência </span>
+                </div>
+                <div class="valor_minimo">
+                    <span style="margin-right: 10px">Valor mínimo: </span>
+                    @Html.TextBox("Min", "", new { @class = "form-control mr-sm-2", type = "number" })
+                </div>
+                <div class="valor_maximo">
+                    <span style="margin-right: 10px">Valor máximo: </span>
+                    @Html.TextBox("Max", "", new { @class = "form-control mr-sm-2", type = "number" })
+                </div>
+            </div>
+            <div class="botao_mostrar_filtros">
+                <input type="checkbox" class="mostrar_filtros" />
+            </div>
+        </div>
         }
     </div>
 </nav>

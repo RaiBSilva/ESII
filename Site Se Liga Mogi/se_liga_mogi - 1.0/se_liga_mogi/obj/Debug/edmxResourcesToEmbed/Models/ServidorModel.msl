@@ -45,16 +45,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="projetos_de_lei">
-      <EntityTypeMapping TypeName="Se_Liga_MogiModel1.projetos_de_lei">
-        <MappingFragment StoreEntitySet="projetos_de_lei">
-          <ScalarProperty Name="anotacao" ColumnName="anotacao" />
-          <ScalarProperty Name="assunto" ColumnName="assunto" />
-          <ScalarProperty Name="autor_projeto" ColumnName="autor_projeto" />
-          <ScalarProperty Name="numero_projeto" ColumnName="numero_projeto" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="remuneracao_servidores">
       <EntityTypeMapping TypeName="Se_Liga_MogiModel1.remuneracao_servidores">
         <MappingFragment StoreEntitySet="remuneracao_servidores">
@@ -74,6 +64,17 @@
           <ScalarProperty Name="cargo_servidor" ColumnName="cargo_servidor" />
           <ScalarProperty Name="nome_servidor" ColumnName="nome_servidor" />
           <ScalarProperty Name="rgf" ColumnName="rgf" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projetos_de_lei">
+      <EntityTypeMapping TypeName="Se_Liga_MogiModel1.projetos_de_lei">
+        <MappingFragment StoreEntitySet="projetos_de_lei">
+          <ScalarProperty Name="ano_projeto" ColumnName="ano_projeto" />
+          <ScalarProperty Name="anotacao" ColumnName="anotacao" />
+          <ScalarProperty Name="assunto" ColumnName="assunto" />
+          <ScalarProperty Name="autor_projeto" ColumnName="autor_projeto" />
+          <ScalarProperty Name="numero_projeto" ColumnName="numero_projeto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

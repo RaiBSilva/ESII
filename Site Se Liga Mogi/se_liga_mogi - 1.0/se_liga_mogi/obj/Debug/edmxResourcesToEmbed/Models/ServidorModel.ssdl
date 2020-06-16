@@ -48,6 +48,7 @@
     <Property Name="autor_projeto" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="assunto" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="anotacao" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ano_projeto" Type="varchar" MaxLength="4" Nullable="false" />
   </EntityType>
   <EntityType Name="remuneracao_servidores">
     <Key>
