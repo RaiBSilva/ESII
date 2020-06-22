@@ -37,6 +37,7 @@ namespace se_liga_mogi.Controllers
                         if (max != null) {
                             q = q.Where(c => c.salario_servidor < max);
                         }
+                        q = q.OrderBy(c => c.salario_servidor);
                         break;
                     case "d":
                         if (min != null)
@@ -47,6 +48,7 @@ namespace se_liga_mogi.Controllers
                         {
                             q = q.Where(c => c.descontos_servidor < max);
                         }
+                        q = q.OrderBy(c => c.descontos_servidor);
                         break;
                     case "r":
                         if (min != null)
@@ -57,12 +59,13 @@ namespace se_liga_mogi.Controllers
                         {
                             q = q.Where(c => c.salario_liquido_servidor < max);
                         }
+                        q = q.OrderBy(c => c.salario_liquido_servidor);
                         break;
                     default:
                         return HttpNotFound();
                 }
             }
-            q = q.OrderBy(c => c.salario_liquido_servidor);
+            q = q.OrderBy(c => c.rgf);
             ViewBag.Pesquisa = Pesquisa;
             ViewBag.Filtro = Filtro;
             ViewBag.Min = min;
